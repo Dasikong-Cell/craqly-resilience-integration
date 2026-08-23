@@ -1,4 +1,4 @@
-# craqly-resilience-integration
+#resilience-integration
 
 End-to-end resilience workflow skill for **craqly-clone** — a local AI coding interview platform.
 
