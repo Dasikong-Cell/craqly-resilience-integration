@@ -115,7 +115,9 @@ for table_getter in [get_ocr_table, get_llm_table, get_ws_table,
     print(table_getter().to_markdown())
 
 # 单元测试
-pytest tests/test_skill_taxonomy.py -v  # 51 个测试全通过
+# 注意：本仓库 (craqly-resilience-integration) 仅含少量真实测试（tests/test_skill_taxonomy.py）。
+# 下方 “51 个测试全通过” 指的是 craqly-clone 外部运行代码的目标测试套件，并非本仓库现状。
+pytest tests/test_skill_taxonomy.py -v
 ```
 
 ## Workflow
@@ -172,9 +174,9 @@ H5: frontend gap — renderer.js 不消费 source/hint/backend/total_ms 字段
 
 ### Step 6 — Verify (Red-Green-Red)
 
-1. **GREEN**: `pytest tests/test_resilience.py::TestResilientOCR -v` → 3/3 pass
+1. **GREEN**: `pytest tests/test_resilience.py::TestResilientOCR -v` → 3/3 pass （这些测试属于 craqly-clone 外部运行代码，本仓库不提供）
 2. **REVERSE**: Temporary revert source mapping + hint generation → 3/3 FAIL (reverse proof)
-3. **WIDER**: `pytest tests/test_resilience.py tests/test_ocr_optimization.py tests/test_server.py -q` → 53/53 pass
+3. **WIDER**: `pytest tests/test_resilience.py tests/test_ocr_optimization.py tests/test_server.py -q` → 53/53 pass （同上，目标数字，非本仓库现状）
 4. **FULL**: `pytest tests/ --ignore=tests/test_latency_e2e.py ...` → 0 new regressions
 
 ### Step 7 — SEM Deliverables
